@@ -9,90 +9,83 @@
 import SwiftUI
 
 struct HomeView: View {
-    
     @State private var searchText: String = ""
     @State private var isModalPresented: Bool = false
     
     let movies = [
-        "Movie A", "Movie B", "Movie C", "Movie D",
-        "Movie E", "Movie F", "Movie G", "Movie H"
+        "Movie1", "Movie2", "Movie3", "Movie4", "Movie5",
+        "Movie6", "Movie7", "Movie8", "Movie9", "Movie10",
+        "Movie11", "Movie12", "Movie13", "Movie14", "Movie15",
+        "Movie16", "Movie17", "Movie18", "Movie19", "Movie20",
+        "Movie21", "Movie22", "Movie23", "Movie24", "Movie25",
+        "Movie26", "Movie27", "Movie28", "Movie29", "Movie30"
     ]
     
     var body: some View {
-        NavigationView{
-            ScrollView{
-                VStack (alignment: .leading, spacing: 20){
-                    Text ("Popular this week")
+        NavigationView {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    // Popular this week
+                    Text("Popular this week")
                         .bold()
                         .font(.title2)
                         .padding(.horizontal)
                     
-                    ScrollView (.horizontal){
-                        HStack(spacing: 16){
-                            RoundedRectangle (cornerRadius: 10)
-                                .fill (Color.gray.opacity(0.3))
-                                .frame(width: 140, height: 190)
-                            
-                            RoundedRectangle (cornerRadius: 10)
-                                .fill (Color.gray.opacity(0.3))
-                                .frame(width: 140, height: 190)
-                            
-                            RoundedRectangle (cornerRadius: 10)
-                                .fill (Color.gray.opacity(0.3))
-                                .frame(width: 140, height: 190)
-                            
-                        } .padding(.horizontal)
+                    ScrollView(.horizontal) {
+                        HStack(spacing: 16) {
+                            ForEach(0..<10, id: \.self) { index in
+                                Image(movies[index])
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 140, height: 190)
+                                    .cornerRadius(10)
+                            }
+                        }
+                        .padding(.horizontal)
                     }
                     
+                    // New from friends
                     Text("New from friends")
                         .bold()
                         .font(.title2)
                         .padding(.horizontal)
                     
-                    ScrollView (.horizontal){
-                        HStack(spacing: 16){
-                            RoundedRectangle (cornerRadius: 10)
-                                .fill (Color.gray.opacity(0.3))
-                                .frame(width: 140, height: 190)
-                            
-                            RoundedRectangle (cornerRadius: 10)
-                                .fill (Color.gray.opacity(0.3))
-                                .frame(width: 140, height: 190)
-                            
-                            RoundedRectangle (cornerRadius: 10)
-                                .fill (Color.gray.opacity(0.3))
-                                .frame(width: 140, height: 190)
-                            
-                        } .padding(.horizontal)
+                    ScrollView(.horizontal) {
+                        HStack(spacing: 16) {
+                            ForEach(10..<20, id: \.self) { index in
+                                Image(movies[index])
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 140, height: 190)
+                                    .cornerRadius(10)
+                            }
+                        }
+                        .padding(.horizontal)
                     }
                     
-                    Text ("Popular with friends")
+                    // Popular with friends
+                    Text("Popular with friends")
                         .bold()
                         .font(.title2)
                         .padding(.horizontal)
                     
-                    ScrollView (.horizontal){
-                        HStack(spacing: 16){
-                            RoundedRectangle (cornerRadius: 10)
-                                .fill (Color.gray.opacity(0.3))
-                                .frame(width: 140, height: 190)
-                            
-                            RoundedRectangle (cornerRadius: 10)
-                                .fill (Color.gray.opacity(0.3))
-                                .frame(width: 140, height: 190)
-                            
-                            RoundedRectangle (cornerRadius: 10)
-                                .fill (Color.gray.opacity(0.3))
-                                .frame(width: 140, height: 190)
-                            
-                        } .padding(.horizontal)
+                    ScrollView(.horizontal) {
+                        HStack(spacing: 16) {
+                            ForEach(20..<30, id: \.self) { index in
+                                Image(movies[index])
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 140, height: 190)
+                                    .cornerRadius(10)
+                            }
+                        }
+                        .padding(.horizontal)
                     }
-                    
                 }
             }
-            .toolbar{
-                ToolbarItem{
-                    Button{
+            .toolbar {
+                ToolbarItem {
+                    Button {
                         isModalPresented.toggle()
                     } label: {
                         Image(systemName: "plus")
@@ -103,12 +96,9 @@ struct HomeView: View {
                 }
             }
             .navigationTitle("Home")
-    
         }
     }
 }
-
-
 
 #Preview {
     HomeView()
