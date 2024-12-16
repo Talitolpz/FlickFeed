@@ -5,7 +5,6 @@
 //  Created by Citlalli Jaramar Lopez Medina on 16/12/24.
 //
 
-
 import SwiftUI
 
 struct ProfileView2: View {
@@ -22,11 +21,11 @@ struct ProfileView2: View {
                         .frame(width: 120, height: 120)
                     
                     // Name and Description
-                    Text("Name Lastname")
+                    Text("Tali López")
                         .font(.title)
                         .bold()
                     
-                    Text("blahblah blahblah blah blah blahblah blah blah blah")
+                    Text("I just love movies")
                         .font(.body)
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.center)
@@ -34,25 +33,26 @@ struct ProfileView2: View {
                 }
                 .padding(.top)
                 
-                // Favorite Films
+                // Favorite Films Section with Horizontal Scroll
                 VStack(alignment: .leading, spacing: 16) {
                     Text("Favorite Films")
                         .font(.title2)
                         .bold()
                         .padding(.horizontal)
                     
-                    HStack(spacing: 16) {
-                        ForEach(favoriteMovies, id: \.self) { movie in
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.gray.opacity(0.3))
-                                .frame(width: 80, height: 120)
-                                
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 16) {
+                            ForEach(favoriteMovies, id: \.self) { movie in
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.gray.opacity(0.3))
+                                    .frame(width: 140, height: 190)
+                            }
                         }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
                 }
                 
-                // Recent Activity
+                // Recent Activity Section with Horizontal Scroll
                 VStack(alignment: .leading, spacing: 16) {
                     Text("Recent Activity")
                         .font(.title2)
@@ -64,8 +64,7 @@ struct ProfileView2: View {
                             ForEach(recentActivity, id: \.self) { movie in
                                 RoundedRectangle(cornerRadius: 10)
                                     .fill(Color.gray.opacity(0.3))
-                                    .frame(width: 80, height: 120)
-                                   
+                                    .frame(width: 140, height: 190)
                             }
                         }
                         .padding(.horizontal)
