@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MovieDetailView3: View {
+struct MovieDetailView: View {
     @State private var userRating: Int = 0 // Rating del usuario
     @State private var showRatingPopup = false // Para mostrar la ventana emergente de calificación
     @State private var isInWatchlist = false // Si está en la watchlist o no
@@ -67,7 +67,7 @@ struct MovieDetailView3: View {
                             .font(.headline)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(isInWatchlist ? Color.gray.opacity(0.7) : Color.gray.opacity(0.7))
+                            .background(isInWatchlist ? Color.purple : Color.purple)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
@@ -80,7 +80,7 @@ struct MovieDetailView3: View {
                             .font(.headline)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color.gray.opacity(0.7))
+                            .background(Color.purple)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
@@ -163,6 +163,6 @@ struct MovieDetailView3: View {
 
 struct MovieDetailView3_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailView3()
+        MovieDetailView()
     }
 }
