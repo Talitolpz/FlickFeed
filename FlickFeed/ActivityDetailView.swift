@@ -11,10 +11,15 @@ import SwiftUI
 
 struct WatchedMoviesView: View {
     let watchedMovies = [
-        Movie(imageName: "Movie45", title: "Movie A"),
-        Movie(imageName: "Movie54", title: "Movie B"),
-        Movie(imageName: "Movie10", title: "Movie C"),
-        Movie(imageName: "Movie100", title: "Movie D")
+        Movie(imageName: "Movie47", title: "Jawbreaker"),
+        Movie(imageName: "Movie76", title: "Eyes Wide Shut"),
+        Movie(imageName: "Movie10", title: "Promising Young Woman"),
+        Movie(imageName: "Movie100", title: "Nightcrawler"),
+        Movie(imageName: "Movie110", title: "Mother"),
+        Movie(imageName: "Movie124", title: "Barbarian"),
+        Movie(imageName: "Movie149", title: "The Silence Of The Lambs"),
+        Movie(imageName: "Movie152", title: "Catch Me If You Can")
+
     ]
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())] // Definir las columnas para el grid
@@ -138,9 +143,10 @@ struct MyReviewsView: View {
 struct FriendsWatchedView: View {
     // Lista de amigos con sus películas vistas
     let friendsWatched = [
-        (friend: "Presno", movie: Movie(imageName: "Movie54", title: "The Holdovers")),
+        (friend: "Sebas Presno", movie: Movie(imageName: "Movie54", title: "The Holdovers")),
         (friend: "Gigi Arce", movie: Movie(imageName: "Movie15", title: "Movie 32")),
         (friend: "Dani Valdes", movie: Movie(imageName: "Movie89", title: "Movie 89")),
+        (friend: "Analía Casillas", movie: Movie(imageName: "Movie1", title: "Mean Girls")),
         (friend: "Friend 4", movie: Movie(imageName: "Movie41", title: "Movie 41"))
     ]
     
@@ -354,5 +360,5 @@ struct DiaryView: View {
 
 
 #Preview{
-    FriendsReviewsView()
+    WatchedMoviesView()
 }

@@ -7,15 +7,30 @@
 
 import SwiftUI
 
+// Estructura para las categorías
+struct Category: Identifiable {
+    let id = UUID()
+    let name: String
+    let imageName: String
+}
+
 struct SearchView: View {
     @State private var searchText: String = "" // Track the search input
+    
+    // Lista de categorías con imágenes asociadas
     let categories = [
-        "Action", "Comedy", "Drama", "Horror",
-        "Romance", "Thriller", "Sci-Fi", "Documentary"
+        Category(name: "Action", imageName: "Movie1"),
+        Category(name: "Comedy", imageName: "Movie2"),
+        Category(name: "Drama", imageName: "Movie3"),
+        Category(name: "Horror", imageName: "HorrorImage"),
+        Category(name: "Romance", imageName: "RomanceImage"),
+        Category(name: "Thriller", imageName: "ThrillerImage"),
+        Category(name: "Sci-Fi", imageName: "SciFiImage"),
+        Category(name: "Documentary", imageName: "DocumentaryImage")
     ]
 
     var body: some View {
-        NavigationView{
+        NavigationView {
             VStack {
                 // Search Bar
                 HStack {
@@ -38,29 +53,33 @@ struct SearchView: View {
                 // Browse Categories Grid
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                        ForEach(categories, id: \.self) { category in
+                        ForEach(categories) { category in
                             ZStack(alignment: .bottomLeading) {
-                                // Placeholder for category image
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color.gray.opacity(0.3))
+                                // Imagen de fondo para la categoría
+                                Image(category.imageName)
+                                    .resizable()
+                                    .scaledToFill()
                                     .frame(height: 120)
+                                    .cornerRadius(12)
+                                    .clipped()
                                 
-                                // Overlay text for category
-                                Text(category)
+                                // Texto superpuesto
+                                Text(category.name)
                                     .font(.headline)
-                                    .foregroundColor(.black)
-                                    .padding(20)
+                                    .foregroundColor(.white)
+                                    .padding(10)
                             }
                         }
                     }
                     .padding(.horizontal)
                     .padding(.top, 16)
                 }
-            }        .navigationTitle("Search")
-
+            }
+            .navigationTitle("Search")
         }
     }
 }
+
 
 #Preview {
     SearchView()
