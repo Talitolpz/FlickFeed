@@ -48,16 +48,22 @@ struct WatchedMoviesView: View {
 }
 
 
+//////////////////////////////////////////////////////////////////////
+
 
 struct RatedMoviesView: View {
     // Películas con sus imágenes y títulos, sin el rating en la estructura Movie
     let ratedMovies = [
-        Movie(imageName: "Movie2", title: "Movie X"),
-        Movie(imageName: "Movie3", title: "Movie Y"),
-        Movie(imageName: "Movie4", title: "Movie Z")
+        Movie(imageName: "Movie99", title: "Footloose"),
+        Movie(imageName: "Movie3", title: "Sick Of Myself"),
+        Movie(imageName: "Movie94", title: "Psycho"),
+        Movie(imageName: "Movie44", title: "Possession"),
+        Movie(imageName: "Movie4", title: "Dead Poets Society"),
+        Movie(imageName: "Movie2", title: "The Exorcist")
+        
     ]
     
-    let ratings = [3, 4, 5] // Las calificaciones para las películas
+    let ratings = [3, 4, 5, 3, 5, 4] // Las calificaciones para las películas
 
     let columns = [GridItem(.flexible()), GridItem(.flexible())] // Definir las columnas para el grid
     
@@ -93,6 +99,9 @@ struct RatedMoviesView: View {
         .navigationTitle("Rated Movies")
     }
 }
+
+
+////////////////////////////////////////////////////////////////////
 
 
 struct MyReviewsView: View {
@@ -138,6 +147,9 @@ struct MyReviewsView: View {
         .navigationTitle("My Reviews")
     }
 }
+
+
+////////////////////////////////////////////////////////////////////
 
 
 struct FriendsWatchedView: View {
@@ -195,6 +207,8 @@ struct FriendsWatchedView: View {
     }
 }
 
+
+////////////////////////////////////////////////////
 
 struct FriendsReviewsView: View {
     // Datos de las reseñas de los amigos
@@ -258,6 +272,10 @@ struct FriendsReviewsView: View {
     }
 }
 
+
+///////////////////////////////////////////////////////////////////
+
+
 struct WatchlistView: View {
     let watchlist = [
         Movie(imageName: "Movie23", title: "Movie G"),
@@ -290,6 +308,10 @@ struct WatchlistView: View {
         .navigationTitle("Watchlist")
     }
 }
+
+
+
+//////////////////////////////////////////////
 
 
 let diaryEntries = [
@@ -360,5 +382,5 @@ struct DiaryView: View {
 
 
 #Preview{
-    WatchedMoviesView()
+    RatedMoviesView ()
 }
