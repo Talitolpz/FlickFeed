@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct ProfileView2: View {
-    let favoriteMovies = ["Favorite 1", "Favorite 2", "Favorite 3", "Favorite 4"]
-    let recentActivity = ["Watched 1", "Watched 2", "Watched 3", "Watched 4", "Watched 5"]
+    let favoriteMovies = ["Movie131", "Movie81", "Movie22", "Movie12", "Movie116", "Movie93"]
+    let recentActivity = ["Movie3", "Movie75", "Movie68", "Movie80", "Movie55", "Movie49", "Movie54", "Movie71"]
+    
+    @State private var isSeeAllPresented = false
+    @State private var movieCategory: [String] = []
 
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
                 // Profile Section
                 VStack(spacing: 12) {
-                    Circle()
-                        .fill(Color.gray.opacity(0.3))
+                    Image("ProfilePic")
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(Circle())
                         .frame(width: 120, height: 120)
+                        .shadow(radius: 10)
                     
                     // Name and Description
                     Text("Tali López")
@@ -35,36 +41,64 @@ struct ProfileView2: View {
                 
                 // Favorite Films Section with Horizontal Scroll
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Favorite Films")
-                        .font(.title2)
-                        .bold()
-                        .padding(.horizontal)
-                    
+                    HStack {
+                        Text("Favorite Films")
+                            .font(.title2)
+                            .bold()
+                        Spacer()
+                        Button(action: {
+                            movieCategory = favoriteMovies
+                            isSeeAllPresented.toggle()
+                        }) {
+                            Text("See All")
+                                .font(.subheadline)
+                                .foregroundColor(.purple) // Morado
+                                .padding(.trailing)
+                        }
+                    }
+                    .padding(.horizontal)
+
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
                             ForEach(favoriteMovies, id: \.self) { movie in
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.gray.opacity(0.3))
+                                Image(movie) // Mostrar imagen desde assets
+                                    .resizable()
+                                    .scaledToFill()
                                     .frame(width: 140, height: 190)
+                                    .cornerRadius(10)
                             }
                         }
                         .padding(.horizontal)
                     }
                 }
-                
+                                
                 // Recent Activity Section with Horizontal Scroll
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Recent Activity")
-                        .font(.title2)
-                        .bold()
-                        .padding(.horizontal)
-                    
+                    HStack {
+                        Text("Recent Activity")
+                            .font(.title2)
+                            .bold()
+                        Spacer()
+                        Button(action: {
+                            movieCategory = recentActivity
+                            isSeeAllPresented.toggle()
+                        }) {
+                            Text("See All")
+                                .font(.subheadline)
+                                .foregroundColor(.purple) // Morado
+                                .padding(.trailing)
+                        }
+                    }
+                    .padding(.horizontal)
+
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
                             ForEach(recentActivity, id: \.self) { movie in
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.gray.opacity(0.3))
+                                Image(movie) // Mostrar imagen desde assets
+                                    .resizable()
+                                    .scaledToFill()
                                     .frame(width: 140, height: 190)
+                                    .cornerRadius(10)
                             }
                         }
                         .padding(.horizontal)
@@ -73,8 +107,36 @@ struct ProfileView2: View {
             }
         }
         .navigationTitle("Profile")
+        .sheet(isPresented: $isSeeAllPresented) {
+            SeeAllMoviesView(movies: movieCategory)
+        }
     }
 }
+
+struct SeeAllMoviesView: View {
+    let movies: [String]
+    
+    // Definir las columnas para la vista en columnas
+    let columns = [GridItem(.flexible()), GridItem(.flexible())]
+
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 16) {
+                    ForEach(movies, id: \.self) { movie in
+                        Image(movie) // Mostrar imagen desde assets
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 160, height: 235)
+                            .cornerRadius(10)
+                    }
+                }
+                .padding()
+            }
+            .navigationTitle("All Movies")
+            }
+        }
+    }
 
 #Preview {
     ProfileView2()
