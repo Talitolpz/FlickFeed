@@ -107,9 +107,12 @@ struct RatedMoviesView: View {
 struct MyReviewsView: View {
     // Datos de las reseñas
     let reviews = [
-        (movie: Movie(imageName: "Movie9", title: "Movie A"), review: "Amazing movie, highly recommended!"),
-        (movie: Movie(imageName: "Movie59", title: "Movie B"), review: "Good but a bit slow."),
-        (movie: Movie(imageName: "Movie21", title: "Movie C"), review: "Didn't like it much.")
+        (movie: Movie(imageName: "Movie97", title: "Thirtheen"), review: "Are they really 13??? How???"),
+        (movie: Movie(imageName: "Movie59", title: "Midsommar"), review: "It was sooo good and visually stunning."),
+        (movie: Movie(imageName: "Movie24", title: "But I'm A Cheerleader"), review: "Wow, just wow"),
+        (movie: Movie(imageName: "Movie113", title: "Scott Pilgrim VS The World"), review: "Love this movie, soo iconic."),
+        (movie: Movie(imageName: "Movie143", title: "Girl, Interrupted"), review: "Great perfomance."),
+        (movie: Movie(imageName: "Movie123", title: "Close"), review: "Sobbing")
     ]
     
     var body: some View {
@@ -382,5 +385,5 @@ struct DiaryView: View {
 
 
 #Preview{
-    RatedMoviesView ()
+    MyReviewsView ()
 }
