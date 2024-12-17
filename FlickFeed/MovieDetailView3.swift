@@ -84,11 +84,11 @@ struct MovieDetailView3: View {
                     Button(action: {
                         isInWatchlist.toggle()
                     }) {
-                        Text(isInWatchlist ? "Added to Watchlist" : "Add to Watchlist")
+                        Text(isInWatchlist ? "On your Watchlist" : "Add to Watchlist")
                             .font(.headline)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(isInWatchlist ? Color.green : Color.purple)
+                            .background(isInWatchlist ? Color.gray : Color.purple)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
@@ -170,6 +170,7 @@ struct MovieDetailView3: View {
             }
         }
         .navigationTitle("Movie Detail")
+        .ignoresSafeArea()
         
         // Ventana para calificar
         .sheet(isPresented: $showRatingPopup) {
