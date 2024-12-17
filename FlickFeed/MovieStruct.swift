@@ -11,4 +11,5 @@ struct Movie: Identifiable {
     let id = UUID()
     let imageName: String
     var title: String
+
 }

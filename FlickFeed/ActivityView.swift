@@ -36,13 +36,14 @@ struct ActivityLibraryView: View {
                 }
                 
                 Section(header: Text("Friends' Activity")) {
-                    FlickFeed.libraryRow(title: "Friends' Watched", iconName: "person.2.fill", destination: AnyView(FriendsActivityView()))
-                    libraryRow(title: "Friends' Reviews", iconName: "quote.bubble")
+                    FlickFeed.libraryRow(title: "Friends' Watched", iconName: "person.2.fill", destination: AnyView(FriendsWatchedView()))
+                    FlickFeed.libraryRow(title: "Friends' Reviews", iconName: "quote.bubble", destination: AnyView(FriendsReviewsView()))
                 }
                 
                 Section(header: Text("Other")) {
                     FlickFeed.libraryRow(title: "My Watchlist", iconName: "bookmark.fill", destination: AnyView(WatchlistView()))
-                    libraryRow(title: "Diary", iconName: "book.fill")
+                    FlickFeed.libraryRow(title: "Diary", iconName: "book.fill", destination: AnyView(DiaryView()))
+                    
                 }
             }
             .listStyle(.plain) //Para quitar el gris de atrás de la lista
