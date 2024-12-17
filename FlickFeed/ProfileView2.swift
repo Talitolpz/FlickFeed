@@ -8,11 +8,30 @@
 import SwiftUI
 
 struct ProfileView2: View {
-    let favoriteMovies = ["Movie131", "Movie81", "Movie22", "Movie12", "Movie116", "Movie93"]
-    let recentActivity = ["Movie3", "Movie75", "Movie68", "Movie80", "Movie55", "Movie49", "Movie54", "Movie71"]
+    // Películas favoritas con estructura Movie
+    let favoriteMovies: [Movie] = [
+        Movie(imageName: "Movie131", title: "Little Miss Sunshine"),
+        Movie(imageName: "Movie81", title: "Hocus Pocus"),
+        Movie(imageName: "Movie22", title: "León: The Professional"),
+        Movie(imageName: "Movie12", title: "Pan's Labyrinth"),
+        Movie(imageName: "Movie116", title: "The Grand Budapest Hotel"),
+        Movie(imageName: "Movie93", title: "Shrek 2")
+    ]
+    
+    // Actividad reciente con estructura Movie
+    let recentActivity: [Movie] = [
+        Movie(imageName: "Movie3", title: "Sick of Myself"),
+        Movie(imageName: "Movie75", title: "Superbad"),
+        Movie(imageName: "Movie68", title: "The Holiday"),
+        Movie(imageName: "Movie80", title: "The Butterfly Effect"),
+        Movie(imageName: "Movie55", title: "The Worst Person in the World"),
+        Movie(imageName: "Movie49", title: "Sabrina"),
+        Movie(imageName: "Movie54", title: "Call Me By Your Name"),
+        Movie(imageName: "Movie71", title: "10 Things I Hate About You")
+    ]
     
     @State private var isSeeAllPresented = false
-    @State private var movieCategory: [String] = []
+    @State private var movieCategory: [Movie] = []
 
     var body: some View {
         ScrollView {
@@ -60,12 +79,18 @@ struct ProfileView2: View {
 
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
-                            ForEach(favoriteMovies, id: \.self) { movie in
-                                Image(movie) // Mostrar imagen desde assets
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 140, height: 190)
-                                    .cornerRadius(10)
+                            ForEach(favoriteMovies) { movie in
+                                VStack {
+                                    Image(movie.imageName) // Mostrar imagen desde assets
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 140, height: 190)
+                                        .cornerRadius(10)
+                                    
+                                    Text(movie.title) // Título de la película
+                                        .font(.footnote)
+                                        .multilineTextAlignment(.center)
+                                }
                             }
                         }
                         .padding(.horizontal)
@@ -93,12 +118,18 @@ struct ProfileView2: View {
 
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
-                            ForEach(recentActivity, id: \.self) { movie in
-                                Image(movie) // Mostrar imagen desde assets
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 140, height: 190)
-                                    .cornerRadius(10)
+                            ForEach(recentActivity) { movie in
+                                VStack {
+                                    Image(movie.imageName) // Mostrar imagen desde assets
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 140, height: 190)
+                                        .cornerRadius(10)
+                                    
+                                    Text(movie.title) // Título de la película
+                                        .font(.footnote)
+                                        .multilineTextAlignment(.center)
+                                }
                             }
                         }
                         .padding(.horizontal)
@@ -114,7 +145,7 @@ struct ProfileView2: View {
 }
 
 struct SeeAllMoviesView: View {
-    let movies: [String]
+    let movies: [Movie]
     
     // Definir las columnas para la vista en columnas
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -123,20 +154,27 @@ struct SeeAllMoviesView: View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(movies, id: \.self) { movie in
-                        Image(movie) // Mostrar imagen desde assets
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 160, height: 235)
-                            .cornerRadius(10)
+                    ForEach(movies) { movie in
+                        VStack {
+                            Image(movie.imageName) // Mostrar imagen desde assets
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 160, height: 235)
+                                .cornerRadius(10)
+                            
+                            Text(movie.title) // Título de la película
+                                .font(.footnote)
+                                .multilineTextAlignment(.center)
+                        }
                     }
                 }
                 .padding()
             }
             .navigationTitle("All Movies")
-            }
         }
     }
+}
+
 
 #Preview {
     ProfileView2()
