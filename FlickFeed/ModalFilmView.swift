@@ -5,7 +5,7 @@
 //  Created by Citlalli Jaramar Lopez Medina on 16/12/24.
 //
 
-import SwiftUI
+/*import SwiftUI
 
 struct LogoToFilmModalView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -90,3 +90,4 @@ struct LogoToFilmViewModal_Previews: PreviewProvider {
         LogoToFilmModalView(movies: [String]())
     }
 }
+*/
