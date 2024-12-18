@@ -36,7 +36,8 @@ struct MovieDetailView3: View {
                         .clipped()
                         .overlay(Color.black.opacity(0.4)) // Overlay oscuro
                         .ignoresSafeArea(edges: .top) // Extiende la imagen hasta el borde superior
-                
+                        .accessibilityHidden(true) // Ignora la imagen
+
                     // Poster Image Overlay (Imagen de la película)
                     Image(film.imageName) // Imagen del poster
                         .resizable()
@@ -45,6 +46,7 @@ struct MovieDetailView3: View {
                         .cornerRadius(10)
                         .offset(x: -35, y: 100)
                         .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
+                        .accessibilityHidden(true) // Ignora la imagen
                 }
                 .padding(.bottom, 6)
                 
@@ -54,14 +56,17 @@ struct MovieDetailView3: View {
                         Text(film.title)
                             .font(.largeTitle)
                             .bold()
-                        
+                            .accessibilityLabel(film.title) // Etiqueta accesible para el título
+
                         Text("\(film.year) • \(film.genre) • \(film.duration)")
                             .font(.subheadline)
                             .foregroundColor(.gray)
-                        
+                            .accessibilityLabel("Year:\(film.year),Genre: \(film.genre),Film Duration: \(film.duration)") // Descripción accesible
+
                         Text("Directed by \(film.director)")
                             .font(.subheadline)
                             .foregroundColor(.gray)
+                            .accessibilityLabel("Directed by \(film.director)") // Descripción accesible
                     }
                     Spacer()
                 }
@@ -72,11 +77,13 @@ struct MovieDetailView3: View {
                     Text("Synopsis")
                         .font(.title2)
                         .bold()
-                    
                     Text(film.synopsis) // Usamos la sinopsis del modelo Film
                         .font(.body)
                         .foregroundColor(.gray)
+                        .accessibilityLabel(film.synopsis) // Descripción accesible
                 }
+                .accessibilityElement(children: .combine)
+                
                 .padding(.horizontal)
                 
                 // Botones alineados
@@ -92,6 +99,7 @@ struct MovieDetailView3: View {
                             .background(isInWatchlist ? Color.gray : Color.purple)
                             .foregroundColor(.white)
                             .cornerRadius(10)
+                            .accessibilityLabel(isInWatchlist ? "Remove from Watchlist" : "Add to Watchlist") // Descripción accesible para el botón
                     }
                     
                     // Botón Rate or Review
@@ -105,6 +113,7 @@ struct MovieDetailView3: View {
                             .background(Color.purple)
                             .foregroundColor(.white)
                             .cornerRadius(10)
+                            .accessibilityLabel(userRating > 0 ? "Rate Again" : "Rate this movie") // Descripción accesible para el botón
                     }
                 }
                 .padding(.horizontal)
@@ -114,7 +123,8 @@ struct MovieDetailView3: View {
                     VStack(spacing: 8) {
                         Text("Your Rating")
                             .font(.subheadline)
-                        
+                            .accessibilityAddTraits(.isHeader) // Etiqueta como encabezado
+
                         HStack {
                             ForEach(1...5, id: \.self) { star in
                                 Image(systemName: star <= userRating ? "star.fill" : "star")
@@ -123,12 +133,12 @@ struct MovieDetailView3: View {
                                     .onTapGesture {
                                         userRating = star // Permite cambiar la calificación
                                     }
+                                    .accessibilityLabel("\(star <= userRating ? "Selected" : "Not selected") star \(star)") // Descripción accesible
                             }
                         }
                     }
                     .padding(.horizontal)
                 }
-                
 
                 // Sección de Reviews
                 VStack(alignment: .leading, spacing: 12) {
@@ -136,29 +146,34 @@ struct MovieDetailView3: View {
                         .font(.title2)
                         .bold()
                         .padding(.horizontal)
+                        .accessibilityAddTraits(.isHeader) // Etiqueta como encabezado
                     
                     if reviews.isEmpty {
                         Text("No reviews yet. Be the first to review this movie!")
                             .font(.body)
                             .foregroundColor(.gray)
                             .padding(.horizontal)
+                            .accessibilityLabel("No reviews yet. Be the first to review this movie.") // Descripción accesible cuando no hay reseñas
                     } else {
                         ForEach(reviews) { review in
                             VStack(alignment: .leading, spacing: 8) {
                                 HStack {
                                     Text(review.username)
                                         .font(.headline)
+                                        .accessibilityLabel("Review by \(review.username)") // Descripción accesible para el nombre del revisor
                                     Spacer()
                                     HStack(spacing: 4) {
                                         ForEach(0..<5, id: \.self) { index in
                                             Image(systemName: index < review.rating ? "star.fill" : "star")
                                                 .foregroundColor(index < review.rating ? .purple : .gray)
+                                                .accessibilityHidden(true) // Ignorar las estrellas
                                         }
                                     }
                                 }
                                 Text(review.comment)
                                     .font(.body)
                                     .foregroundColor(.gray)
+                                    .accessibilityLabel(review.comment) // Descripción accesible del comentario
                             }
                             .padding()
                             .background(Color.purple.opacity(0.1))
@@ -178,6 +193,7 @@ struct MovieDetailView3: View {
                 Text("Rate & Review")
                     .font(.title)
                     .bold()
+                    .accessibilityAddTraits(.isHeader) // Etiqueta como encabezado
                 
                 // Calificación con estrellas
                 HStack {
@@ -188,6 +204,7 @@ struct MovieDetailView3: View {
                             .onTapGesture {
                                 userRating = star
                             }
+                            .accessibilityLabel("\(star <= userRating ? "Selected" : "Not selected") star \(star)") // Descripción accesible
                     }
                 }
                 
@@ -195,6 +212,7 @@ struct MovieDetailView3: View {
                 TextField("Write your review...", text: $reviewComment)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
+                    .accessibilityLabel("Write your review here") // Descripción accesible para el campo de texto
                 
                 // Botón para guardar
                 Button(action: {
@@ -210,6 +228,7 @@ struct MovieDetailView3: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.purple)
                         .cornerRadius(10)
+                        .accessibilityLabel("Submit your review") // Descripción accesible para el botón
                 }
                 .padding()
             }
@@ -224,6 +243,5 @@ struct MovieDetailView3_Previews: PreviewProvider {
         MovieDetailView3(film: Film(title: "The Exorcist", imageName: "Movie2", bannerImageName: "Banner2", year: "1973", genre: "Horror", director: "William Friedkin", duration: "2h 2m", synopsis: "A terrifying story of demonic possession."))
     }
 }
-
 
 
