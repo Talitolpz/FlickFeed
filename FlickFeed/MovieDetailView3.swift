@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// Estructura para las reviews
 struct Review: Identifiable {
     let id = UUID()
     let username: String
@@ -16,6 +15,8 @@ struct Review: Identifiable {
 }
 
 struct MovieDetailView3: View {
+    let film: Film  // Aquí usas el modelo Film
+    
     @State private var userRating: Int = 0 // Rating del usuario
     @State private var showRatingPopup = false // Para mostrar la ventana emergente de calificación
     @State private var isInWatchlist = false // Si está en la watchlist o no
@@ -28,7 +29,7 @@ struct MovieDetailView3: View {
                 // Imagen principal y Poster
                 ZStack(alignment: .bottomTrailing) {
                     // Imagen de fondo (Banner)
-                    Image("Movie3") // Imagen del banner desde los assets
+                    Image(film.bannerImageName) // Imagen del banner desde los assets
                         .resizable()
                         .scaledToFill()
                         .frame(height: 250)
@@ -37,7 +38,7 @@ struct MovieDetailView3: View {
                         .ignoresSafeArea(edges: .top) // Extiende la imagen hasta el borde superior
                 
                     // Poster Image Overlay (Imagen de la película)
-                    Image("Movie3") // Imagen del poster
+                    Image(film.imageName) // Imagen del poster
                         .resizable()
                         .scaledToFill()
                         .frame(width: 120, height: 180)
@@ -50,15 +51,15 @@ struct MovieDetailView3: View {
                 // Información de la película
                 HStack(alignment: .top, spacing: 16) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Movie Title")
+                        Text(film.title)
                             .font(.largeTitle)
                             .bold()
                         
-                        Text("2024 • Drama • 2h 10m")
+                        Text("\(film.year) • \(film.genre) • \(film.duration)")
                             .font(.subheadline)
                             .foregroundColor(.gray)
                         
-                        Text("Directed by Fulanito")
+                        Text("Directed by \(film.director)")
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     }
@@ -72,7 +73,7 @@ struct MovieDetailView3: View {
                         .font(.title2)
                         .bold()
                     
-                    Text("This is the synopsis of the movie. Here you can add detailed information about the plot, the storyline, or any other interesting facts about the movie. The synopsis section helps provide context to the user.")
+                    Text(film.synopsis) // Usamos la sinopsis del modelo Film
                         .font(.body)
                         .foregroundColor(.gray)
                 }
@@ -169,7 +170,6 @@ struct MovieDetailView3: View {
                 }
             }
         }
-        .navigationTitle("Movie Detail")
         .ignoresSafeArea()
         
         // Ventana para calificar
@@ -220,8 +220,10 @@ struct MovieDetailView3: View {
 
 struct MovieDetailView3_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailView3()
+        // Proveemos un ejemplo de "film" para la vista previa
+        MovieDetailView3(film: Film(title: "The Exorcist", imageName: "Movie2", bannerImageName: "Banner2", year: "1973", genre: "Horror", director: "William Friedkin", duration: "2h 2m", synopsis: "A terrifying story of demonic possession."))
     }
 }
+
 
 

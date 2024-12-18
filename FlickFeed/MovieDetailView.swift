@@ -14,7 +14,7 @@ struct Review: Identifiable {
     let rating: Int
     let comment: String
 }
-*/
+
 struct MovieDetailView: View {
     let movieImageName: String
     let secondaryImageName: String
@@ -221,3 +221,4 @@ struct MovieDetailView_Previews: PreviewProvider {
     }
 }
 
+ */
