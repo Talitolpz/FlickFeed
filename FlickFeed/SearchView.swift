@@ -19,9 +19,9 @@ struct SearchView: View {
     
     // Lista de categorías con imágenes asociadas
     let categories = [
-        Category(name: "Action", imageName: "Movie1"),
-        Category(name: "Comedy", imageName: "Movie2"),
-        Category(name: "Drama", imageName: "Movie3"),
+        Category(name: "Action", imageName: "ActionImage"),
+        Category(name: "Comedy", imageName: "ComedyImage"),
+        Category(name: "Drama", imageName: "DramaImage"),
         Category(name: "Horror", imageName: "HorrorImage"),
         Category(name: "Romance", imageName: "RomanceImage"),
         Category(name: "Thriller", imageName: "ThrillerImage"),

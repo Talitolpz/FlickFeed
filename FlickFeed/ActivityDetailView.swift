@@ -110,7 +110,7 @@ struct MyReviewsView: View {
         (movie: Movie(imageName: "Movie97", title: "Thirtheen"), review: "Are they really 13??? How???"),
         (movie: Movie(imageName: "Movie59", title: "Midsommar"), review: "It was sooo good and visually stunning."),
         (movie: Movie(imageName: "Movie24", title: "But I'm A Cheerleader"), review: "Wow, just wow"),
-        (movie: Movie(imageName: "Movie113", title: "Scott Pilgrim VS The World"), review: "Love this movie, soo iconic."),
+        (movie: Movie(imageName: "Movie113", title: "Scott Pilgrim VS The World"), review: "Love this movie, sooo iconic."),
         (movie: Movie(imageName: "Movie143", title: "Girl, Interrupted"), review: "Great perfomance."),
         (movie: Movie(imageName: "Movie123", title: "Close"), review: "Sobbing")
     ]
@@ -158,11 +158,12 @@ struct MyReviewsView: View {
 struct FriendsWatchedView: View {
     // Lista de amigos con sus películas vistas
     let friendsWatched = [
-        (friend: "Sebas Presno", movie: Movie(imageName: "Movie54", title: "The Holdovers")),
-        (friend: "Gigi Arce", movie: Movie(imageName: "Movie15", title: "Movie 32")),
-        (friend: "Dani Valdes", movie: Movie(imageName: "Movie89", title: "Movie 89")),
+        (friend: "Sebas Presno", movie: Movie(imageName: "Movie141", title: "The Holdovers")),
+        (friend: "Gigi Arce", movie: Movie(imageName: "Movie15", title: "Almost Famous")),
+        (friend: "Dani Valdes", movie: Movie(imageName: "Movie89", title: "Donnie darko")),
         (friend: "Analía Casillas", movie: Movie(imageName: "Movie1", title: "Mean Girls")),
-        (friend: "Friend 4", movie: Movie(imageName: "Movie41", title: "Movie 41"))
+        (friend: "Gus Vazquez", movie: Movie(imageName: "Movie104", title: "Beetlejuice")),
+        (friend: "Dani Paredes", movie: Movie(imageName: "Movie41", title: "Black Swan"))
     ]
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())] // Definir las columnas para el grid
@@ -216,9 +217,10 @@ struct FriendsWatchedView: View {
 struct FriendsReviewsView: View {
     // Datos de las reseñas de los amigos
     let friendsReviews = [
-        (friend: "Friend 1", movie: Movie(imageName: "Movie41", title: "Movie 45"), review: "Amazing movie, highly recommended!"),
-        (friend: "Friend 2", movie: Movie(imageName: "Movie75", title: "Movie B"), review: "Good but a bit slow."),
-        (friend: "Friend 3", movie: Movie(imageName: "Movie91", title: "Movie C"), review: "Didn't like it much.")
+        (friend: "Gigi Arce", movie: Movie(imageName: "Movie144", title: "Booksmart"), review: "Amazing movie, highly recommended!"),
+        (friend: "Daniel Valdes", movie: Movie(imageName: "Movie75", title: "Superbad"), review: "Sooo funny, loved it"),
+        (friend: "Sebastián Presno", movie: Movie(imageName: "Movie91", title: "Raw"), review: "I won't eat meat again"),
+        (friend: "Daniel Paredes", movie: Movie(imageName: "Movie92", title: "Anatomy Of A Fall"), review: "Wow, it was great")
     ]
     
     var body: some View {
@@ -281,10 +283,18 @@ struct FriendsReviewsView: View {
 
 struct WatchlistView: View {
     let watchlist = [
-        Movie(imageName: "Movie23", title: "Movie G"),
-        Movie(imageName: "Movie90", title: "Movie H"),
-        Movie(imageName: "Movie34", title: "Movie I"),
-        Movie(imageName: "Movie77", title: "Movie J")
+        Movie(imageName: "Movie23", title: "The Goonies"),
+        Movie(imageName: "Movie90", title: "Death Becomes Her"),
+        Movie(imageName: "Movie34", title: "Hereditary"),
+        Movie(imageName: "Movie134", title: "The Rocky Horror Picture Show"),
+        Movie(imageName: "Movie146", title: "Fallen Angels"),
+        Movie(imageName: "Movie125", title: "Memento"),
+        Movie(imageName: "Movie140", title: "Perfect Blue"),
+        Movie(imageName: "Movie109", title: "Roma Holiday"),
+        Movie(imageName: "Movie120", title: "Bottoms"),
+        Movie(imageName: "Movie122", title: "Fantastic Mr. Fox"),
+        Movie(imageName: "Movie87", title: "The Zone Of Interest"),
+        Movie(imageName: "Movie77", title: "A Ghost Story")
     ]
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())] // Definir las columnas para el grid
@@ -328,10 +338,20 @@ let diaryEntries = [
 struct DiaryView: View {
     // Lista de actividades del diario
     let diaryEntries = [
-        (movie: Movie(imageName: "Movie12", title: "Movie A"), rating: 4, review: "Amazing movie!"),
-        (movie: Movie(imageName: "Movie60", title: "Movie B"), rating: 5, review: nil),
-        (movie: Movie(imageName: "Movie31", title: "Movie C"), rating: nil, review: "A bit slow but good."),
-        (movie: Movie(imageName: "Movie21", title: "Movie D"), rating: nil, review: nil)
+        (movie: Movie(imageName: "Movie12", title: "Pan's Labyrinth"), rating: 5, review: "Amazing movie!"),
+        (movie: Movie(imageName: "Movie60", title: "Heathers"), rating: 4, review: nil),
+        (movie: Movie(imageName: "Movie31", title: "Ready Or Not"), rating: nil, review: "Better than expected"),
+        (movie: Movie(imageName: "Movie19", title: "Gremlins"), rating: nil, review: nil),
+        (movie: Movie(imageName: "Movie42", title: "Clueless"), rating: nil, review: "Comfort Movie"),
+        (movie: Movie(imageName: "Movie48", title: "In The Mood For Love"), rating: 5, review: nil),
+        (movie: Movie(imageName: "Movie74", title: "La Haine"), rating: 5, review: nil),
+        (movie: Movie(imageName: "Movie85", title: "Bones And All"), rating: 4, review: "Cannibals Aesthetic"),
+        (movie: Movie(imageName: "Movie86", title: "Bodies, Bodies, Bodies"), rating: nil, review: "Hahaha Great"),
+        (movie: Movie(imageName: "Movie102", title: "A Clockwork Orange"), rating: nil, review: nil),
+        (movie: Movie(imageName: "Movie101", title: "Another Round"), rating: 4, review: nil),
+        (movie: Movie(imageName: "Movie96", title: "Freaky Friday"), rating: nil, review: "Classic"),
+        (movie: Movie(imageName: "Movie108", title: "Labyrinth"), rating: nil, review: nil),
+        (movie: Movie(imageName: "Movie128", title: "Gremlins"), rating: 4, review: "Great Film")
     ]
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())] // Definir las columnas para el grid
@@ -385,5 +405,5 @@ struct DiaryView: View {
 
 
 #Preview{
-    MyReviewsView ()
+    DiaryView ()
 }
